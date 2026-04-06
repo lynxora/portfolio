@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seattle Sparkle | Premier House Cleaning in Seattle, WA</title>
+    <meta name="description" content="Experience a spotless home. Professional, insured, and background-checked house cleaning in Seattle, WA. Book your free estimate today!">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6', // Primary Blue
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#172554',
+                        },
+                        dark: {
+                            100: '#334155', // Slate tones for blue theme
+                            200: '#1e293b', 
+                            300: '#0f172a', // Deep slate
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Roboto', sans-serif; font-size: 16px; overflow-x: hidden; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Outfit', sans-serif; }
+        
+        .navbar-blur {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .dark-glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Scroll Animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .is-active {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        /* Click targets */
+        .touch-target { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+        /* Custom Gradients */
+        .text-gradient { background: linear-gradient(135deg, #3b82f6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bg-gradient-btn { background: linear-gradient(135deg, #2563eb, #1d4ed8); transition: transform 0.2s, box-shadow 0.2s; }
+        .bg-gradient-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3); }
+        
+        /* Map container */
+        .map-wrapper iframe { width: 100%; height: 100%; min-height: 350px; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased bg-white">
+
+    <!-- 1. NAV BAR -->
+    <header class="fixed w-full top-0 z-50 navbar-blur transition-shadow duration-300" id="main-nav">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- Brand -->
+                <a href="#" class="flex flex-col justify-center">
+                    <span class="font-heading font-extrabold text-2xl text-dark-300 tracking-tight leading-none">Seattle<span class="text-brand-600">Sparkle</span></span>
+                    <span class="text-xs text-brand-600 font-bold tracking-widest mt-1">CLEANING CO.</span>
+                </a>
+                
+                <!-- Desktop Links -->
+                <nav class="hidden lg:flex space-x-10 items-center">
+                    <a href="#why-us" class="text-gray-600 hover:text-brand-600 font-medium transition-colors touch-target">Why Us</a>
+                    <a href="#services" class="text-gray-600 hover:text-brand-600 font-medium transition-colors touch-target">Services</a>
+                    <a href="#reviews" class="text-gray-600 hover:text-brand-600 font-medium transition-colors touch-target">Reviews</a>
+                    <a href="tel:+12065559876" class="text-dark-300 font-bold hover:text-brand-600 transition-colors flex items-center touch-target">
+                        <svg class="w-5 h-5 mr-2 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        (206) 555-9876
+                    </a>
+                    <a href="#contact" class="bg-gradient-btn text-white font-bold py-3.5 px-7 rounded-2xl touch-target">
+                        Book Now
+                    </a>
+                </nav>
+
+                <!-- Mobile Toggle -->
+                <button id="nav-toggle" class="lg:hidden text-dark-300 hover:text-brand-600 touch-target" aria-label="Toggle Menu">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Full-screen menu -->
+        <div id="mobile-nav" class="fixed inset-0 bg-dark-300 z-40 transform translate-x-full transition-transform duration-400 ease-in-out lg:hidden pt-28 px-6 text-center">
+            <button id="nav-close" class="absolute top-8 right-6 text-white touch-target" aria-label="Close menu">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="flex flex-col space-y-8 mt-10">
+                <a href="#why-us" class="mob-link text-3xl font-heading font-bold text-white hover:text-brand-400">Why Choose Us</a>
+                <a href="#services" class="mob-link text-3xl font-heading font-bold text-white hover:text-brand-400">Our Services</a>
+                <a href="#reviews" class="mob-link text-3xl font-heading font-bold text-white hover:text-brand-400">Reviews</a>
+            </div>
+            <div class="mt-16 border-t border-dark-100 pt-10">
+                <a href="tel:+12065559876" class="text-2xl font-bold text-white mb-8 flex justify-center items-center touch-target">
+                    <svg class="w-6 h-6 mr-3 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    (206) 555-9876
+                </a>
+                <a href="#contact" class="mob-link w-full bg-brand-500 text-white font-bold py-5 rounded-2xl text-xl inline-block touch-target shadow-xl">
+                    Get Your Free Quote
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="pt-28 pb-10 lg:pt-36 lg:pb-16 bg-slate-50 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-200/40 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
+        
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                
+                <!-- Text Content (order 2 on mob, 1 on doc) -->
+                <div class="w-full lg:w-1/2 order-2 lg:order-1 reveal-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 text-brand-800 font-bold text-sm mb-4 uppercase tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-brand-600 animate-pulse"></span> Available in Seattle, WA
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-[4rem] font-heading font-extrabold text-dark-300 leading-[1.1] mb-4">
+                        Experience a <span class="text-gradient">Spotless Home</span> in Seattle
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed">
+                        Professional, reliable house cleaning starting at $119. Reclaim your weekends and let our vetted experts handle the mess.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <a href="#contact" class="bg-gradient-btn text-white font-bold text-lg py-4 px-10 rounded-2xl touch-target text-center">
+                            Book My Clean Today
+                        </a>
+                        <div class="flex flex-col justify-center items-center sm:items-start px-4 text-sm font-medium text-gray-500">
+                            <span class="flex items-center mb-1"><svg class="w-4 h-4 text-brand-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> No Credit Card Required</span>
+                            <span class="flex items-center"><svg class="w-4 h-4 text-brand-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Cancel Anytime</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-6 mt-6 pt-5 border-t border-gray-200">
+                        <span class="flex items-center text-dark-200 font-bold text-sm bg-white py-2 px-4 rounded-xl shadow-sm">
+                            <span class="text-[#f59e0b] mr-1 text-lg">★</span> 5-Star Rated
+                        </span>
+                        <span class="flex items-center text-dark-200 font-bold text-sm bg-white py-2 px-4 rounded-xl shadow-sm">
+                            <svg class="w-5 h-5 text-brand-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg> 
+                            Insured & Bonded
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Image (order 1 on mob, 2 on doc) -->
+                <div class="w-full lg:w-1/2 order-1 lg:order-2 reveal-right">
+                    <div class="relative w-full aspect-[4/3] lg:aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl">
+                        <img src="images/spotless_kitchen_1775500624441.png" alt="Pristine thoroughly cleaned kitchen in Seattle" class="w-full h-full object-cover">
+                        <!-- Glass badge -->
+                        <div class="absolute bottom-6 -left-2 sm:left-6 dark-glass rounded-2xl p-4 flex items-center gap-4 border-l-4 border-l-brand-400">
+                            <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-white shrink-0">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-sm leading-tight">Fully Vetted</p>
+                                <p class="text-gray-300 text-xs">Trusted Employees</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. STATS BAR -->
+    <section class="bg-white border-b border-gray-100 py-6 relative z-20">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center reveal-up" style="transition-delay: 100ms;">
+                    <h3 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-600 mb-2">10k+</h3>
+                    <p class="text-sm font-bold text-gray-500 uppercase tracking-widest">Cleans Finished</p>
+                </div>
+                <div class="text-center reveal-up" style="transition-delay: 200ms;">
+                    <h3 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-600 mb-2">4.9</h3>
+                    <p class="text-sm font-bold text-gray-500 uppercase tracking-widest">Average Rating</p>
+                </div>
+                <div class="text-center reveal-up" style="transition-delay: 300ms;">
+                    <h3 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-600 mb-2">100%</h3>
+                    <p class="text-sm font-bold text-gray-500 uppercase tracking-widest">Background Checked</p>
+                </div>
+                <div class="text-center reveal-up" style="transition-delay: 400ms;">
+                    <h3 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-600 mb-2">24h</h3>
+                    <p class="text-sm font-bold text-gray-500 uppercase tracking-widest">Re-clean Policy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. WHY CHOOSE US (PAS) -->
+    <section id="why-us" class="py-24 bg-dark-300">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 text-white">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-6">Stop spending your free time cleaning.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Problem -->
+                <div class="dark-glass rounded-3xl p-8 reveal-up hover:border-brand-500 transition-colors" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-dark-200 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold mb-4">Zero Energy Left</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Rainy days in Seattle mean more mud dragged inside, and long work weeks leave you with absolutely no energy to scrub floors on your weekend.
+                    </p>
+                </div>
+
+                <!-- Agitate -->
+                <div class="dark-glass rounded-3xl p-8 reveal-up hover:border-brand-500 transition-colors" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-dark-200 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold mb-4">The Stranger Danger</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Hiring random cleaners off the internet is a massive gamble. You risk unvetted strangers in your sanctuary, missed spots, and chronic unreliability.
+                    </p>
+                </div>
+
+                <!-- Solve -->
+                <div class="dark-glass rounded-3xl p-8 reveal-up border-brand-500/50 hover:border-brand-500 transition-colors" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-brand-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-brand-500/30">
+                        <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold mb-4 text-white">The Safe Solution</h3>
+                    <p class="text-gray-400 leading-relaxed text-brand-50">
+                        Choose Seattle Sparkle safely. Our team of W-2 employees is strictly <strong class="text-white">Background-Checked</strong>, <strong class="text-white">Fully Insured</strong>, and trained to detail.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Image Row -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 reveal-up">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] group relative cursor-pointer">
+                    <img src="images/img_1584622650111-993a426fbf0a_500.jpg" loading="lazy" alt="Friendly team" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-dark-300/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] group relative cursor-pointer hidden md:block">
+                    <img src="images/img_1504148455328-c376907d081c_600.jpg" loading="lazy" alt="Living room sparkling clean" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-dark-300/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] group relative cursor-pointer">
+                    <img src="images/img_1556911220-e15b29be8c8f_500.jpg" loading="lazy" alt="Kitchen cleaning details" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-dark-300/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] group relative cursor-pointer hidden md:block">
+                    <img src="images/img_1628177142898-93e36e4e3a50_600.jpg" loading="lazy" alt="Deep clean supplies" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-dark-300/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 5. SERVICES (So What Test) -->
+    <section id="services" class="py-24 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="max-w-3xl mb-16 reveal-up">
+                <span class="text-brand-600 font-bold tracking-widest text-sm uppercase block mb-3">Our Services</span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-dark-300">Cleaning that changes your life.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- S1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group border border-gray-100 reveal-up" style="transition-delay: 100ms;">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="images/img_1527515637462-cff94eecc1ac_800.jpg" loading="lazy" alt="Recurring Maintenance Cleaning" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-heading font-bold text-dark-300 mb-3">Recurring Cleaning</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-4 min-h-[96px]">
+                            Keep the mess away forever. We maintain your home consistently so you can invite friends over anytime without panic-cleaning.
+                        </p>
+                        <a href="#contact" class="text-brand-600 font-bold hover:text-brand-800 flex items-center mt-auto touch-target justify-start p-0 min-h-0">
+                            Get Pricing <svg class="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- S2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group border border-gray-100 reveal-up" style="transition-delay: 200ms;">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="images/img_1556911220-bff31c812dba_500.jpg" loading="lazy" alt="Deep Cleaning Service" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-heading font-bold text-dark-300 mb-3">Deep Detailing</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-4 min-h-[96px]">
+                            Banish hidden dust and allergens. We scrub baseboards, blinds, and light fixtures, giving your family a healthier space to breathe.
+                        </p>
+                        <a href="#contact" class="text-brand-600 font-bold hover:text-brand-800 flex items-center mt-auto touch-target justify-start p-0 min-h-0">
+                            Get Pricing <svg class="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- S3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group border border-gray-100 reveal-up" style="transition-delay: 300ms;">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="images/img_1560448204-e02f11c3d0e2_600.jpg" loading="lazy" alt="Move in moving out clean" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-heading font-bold text-dark-300 mb-3">Move-In / Out</h3>
+                        <p class="text-gray-600 mb-6 line-clamp-4 min-h-[96px]">
+                            Ensure you get your deposit back effortlessly. We sanitize every room from top to bottom, making the transition absolutely stress-free.
+                        </p>
+                        <a href="#contact" class="text-brand-600 font-bold hover:text-brand-800 flex items-center mt-auto touch-target justify-start p-0 min-h-0">
+                            Get Pricing <svg class="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- S4 -->
+                <div class="bg-brand-600 rounded-3xl p-8 text-white flex flex-col justify-center shadow-lg hover:-translate-y-2 transition-transform duration-300 reveal-up" style="transition-delay: 400ms;">
+                    <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold mb-4">Not Sure What You Need?</h3>
+                    <p class="text-brand-100 mb-8 font-medium">
+                        Tell us about your home. We'll suggest the perfect package to fit your exact lifestyle.
+                    </p>
+                    <a href="#contact" class="w-full bg-white text-brand-600 font-bold py-4 rounded-xl text-center hover:bg-gray-50 transition-colors touch-target mt-auto shadow-md">
+                        Get Custom Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TESTIMONIALS (Social Proof) -->
+    <section id="reviews" class="py-24 bg-dark-300 border-t-8 border-brand-500 overflow-hidden relative">
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-brand-600/30 blur-[120px] rounded-full"></div>
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
+                <span class="text-brand-400 font-bold tracking-widest text-sm uppercase block mb-3">Testimonials</span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-white">Your neighbors love us.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Rev 1 -->
+                <div class="dark-glass rounded-[2rem] p-8 reveal-up" style="transition-delay: 100ms;">
+                    <div class="flex text-[#fbbf24] text-xl mb-6">★★★★★</div>
+                    <p class="text-lg text-gray-300 font-serif italic mb-8 border-l-2 border-brand-500 pl-4">
+                        "Got my full deposit back! They came to my Capitol Hill apartment, cleaned behind the oven, scrubbed every baseboard, and the manager was so impressed. Totally worth it."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-dark-100 border border-brand-500/30 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">S</div>
+                        <div>
+                            <p class="text-white font-bold text-base">Sarah T.</p>
+                            <p class="text-brand-400 text-sm">Capitol Hill, Seattle</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rev 2 -->
+                <div class="dark-glass rounded-[2rem] p-8 reveal-up" style="transition-delay: 200ms;">
+                    <div class="flex text-[#fbbf24] text-xl mb-6">★★★★★</div>
+                    <p class="text-lg text-gray-300 font-serif italic mb-8 border-l-2 border-brand-500 pl-4">
+                        "Saved me 5 hours this weekend. With a toddler and two dogs, my house was chaos. The Sparkling team completely transformed our space. The air even feels cleaner."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-dark-100 border border-brand-500/30 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">M</div>
+                        <div>
+                            <p class="text-white font-bold text-base">Mark & Emily R.</p>
+                            <p class="text-brand-400 text-sm">Ballard, Seattle</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rev 3 -->
+                <div class="dark-glass rounded-[2rem] p-8 reveal-up" style="transition-delay: 300ms;">
+                    <div class="flex text-[#fbbf24] text-xl mb-6">★★★★★</div>
+                    <p class="text-lg text-gray-300 font-serif italic mb-8 border-l-2 border-brand-500 pl-4">
+                        "They cleaned behind the fridge and under the stove. I’ve used three different companies in Seattle and no one paid this much attention to extreme detail. Highly recommend."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-dark-100 border border-brand-500/30 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">D</div>
+                        <div>
+                            <p class="text-white font-bold text-base">David K.</p>
+                            <p class="text-brand-400 text-sm">Queen Anne, Seattle</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CONTACT (Lead Capture) -->
+    <section id="contact" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="bg-white rounded-[2.5rem] shadow-2xl shadow-brand-900/5 border border-gray-100 overflow-hidden flex flex-col lg:flex-row">
+                
+                <!-- Left: Form -->
+                <div class="w-full lg:w-1/2 p-8 md:p-14 reveal-left">
+                    <h2 class="text-3xl font-heading font-extrabold text-dark-300 mb-2">Let's Get Started</h2>
+                    <p class="text-gray-500 mb-10 text-lg">Send us a few details and we will price your custom clean instantly.</p>
+                    
+                    <form id="contact-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-bold text-dark-200 mb-2">First Name <span class="text-brand-600">*</span></label>
+                            <input class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-shadow touch-target" type="text" id="name" name="name" placeholder="John" required>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-bold text-dark-200 mb-2">Email <span class="text-brand-600">*</span></label>
+                                <input class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-shadow touch-target" type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-bold text-dark-200 mb-2">Phone <span class="text-brand-600">*</span></label>
+                                <input class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-shadow touch-target" type="tel" id="phone" name="phone" placeholder="(206) 555-0000" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="service_type" class="block text-sm font-bold text-dark-200 mb-2">Service Needed <span class="text-brand-600">*</span></label>
+                            <select id="service_type" name="service_type" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 hover:cursor-pointer touch-target appearance-none" required>
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="recurring">Recurring Cleaning</option>
+                                <option value="deep">One-Time Deep Clean</option>
+                                <option value="move">Move In / Move Out</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="submit-button" class="w-full bg-gradient-btn text-white font-bold text-lg py-4 rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl touch-target mt-4">
+                            <span id="btn-text">Get My Free Quote</span>
+                            <div id="btn-spinner" class="hidden ml-3 h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                        </button>
+
+                        <p class="text-center text-sm font-medium text-gray-500 mt-4 flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-1 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            We respond within 24 hours. Safe & secure.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Right: Map / Contacts -->
+                <div class="w-full lg:w-1/2 bg-gray-100 flex flex-col reveal-right relative">
+                    <div class="map-wrapper flex-grow min-h-[300px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d172138.83597395066!2d-122.46316270564614!3d47.61317424671408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490102c93e83355%3A0x102565466944d59a!2sSeattle%2C%20WA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="bg-brand-900 p-8 sm:p-12 text-white">
+                        <h4 class="text-2xl font-heading font-bold mb-6">Contact Info</h4>
+                        <div class="space-y-4 font-medium">
+                            <a href="tel:+12065559876" class="flex items-center text-brand-100 hover:text-white transition-colors touch-target justify-start p-0 min-h-0">
+                                <svg class="w-6 h-6 mr-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                (206) 555-9876
+                            </a>
+                            <a href="mailto:hello@seattlesparkle.com" class="flex items-center text-brand-100 hover:text-white transition-colors touch-target justify-start p-0 min-h-0">
+                                <svg class="w-6 h-6 mr-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                hello@seattlesparkle.com
+                            </a>
+                            <div class="flex items-start text-brand-100 pt-2">
+                                <svg class="w-6 h-6 mr-4 text-brand-400 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <p>Serving Greater Seattle, Bellevue, Kirkland, and Redmond.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER (Compliance) -->
+    <footer class="bg-dark-300 border-t border-dark-200 py-12 text-gray-400 font-medium">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+                <!-- Branding -->
+                <div class="flex flex-col text-center md:text-left">
+                    <span class="font-heading font-extrabold text-2xl text-white tracking-tight leading-none mb-1">Seattle<span class="text-brand-500">Sparkle</span></span>
+                </div>
+                
+                <!-- Legal / Compliance -->
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
+                    <a href="#" class="hover:text-brand-400 transition-colors touch-target justify-start p-0 min-h-0">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-400 transition-colors touch-target justify-start p-0 min-h-0">Terms & Conditions</a>
+                    <a href="#" class="hover:text-brand-400 transition-colors touch-target justify-start p-0 min-h-0">Do Not Sell or Share My Personal Information</a>
+                    <a href="#" class="hover:text-brand-400 transition-colors touch-target justify-start p-0 min-h-0">Accessibility</a>
+                </div>
+            </div>
+
+            <div class="border-t border-dark-200 pt-8 text-center text-sm md:text-left md:flex justify-between items-center text-gray-500">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Seattle Sparkle Cleaning Services. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Licensed, Bonded, and Insured in WA.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVITY COMPONENT (Vanilla JS) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Navbar Sticky Shadow
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', () => {
+                if(window.scrollY > 10) {
+                    nav.classList.add('shadow-md');
+                } else {
+                    nav.classList.remove('shadow-md');
+                }
+            });
+
+            // 2. Mobile Menu Toggle
+            const navToggle = document.getElementById('nav-toggle');
+            const navClose = document.getElementById('nav-close');
+            const mobileNav = document.getElementById('mobile-nav');
+            const mobileLinks = document.querySelectorAll('.mob-link');
+
+            function toggleMenu() {
+                const isOpen = !mobileNav.classList.contains('translate-x-full');
+                if(!isOpen) {
+                    mobileNav.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileNav.classList.add('translate-x-full');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            navToggle.addEventListener('click', toggleMenu);
+            navClose.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            // 3. Scroll Animations (Intersection Observer)
+            const obsOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('is-active');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, obsOptions);
+
+            document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+            // 4. Form Submission State
+            const form = document.getElementById('contact-form');
+            if(form) {
+                form.addEventListener('submit', function(e) {
+                    const btnBtnText = document.getElementById('btn-text');
+                    const spinner = document.getElementById('btn-spinner');
+                    const btn = document.getElementById('submit-button');
+                    
+                    form.classList.add('opacity-80', 'pointer-events-none');
+                    btnBtnText.textContent = 'Sending...';
+                    spinner.classList.remove('hidden');
+                    btn.classList.add('cursor-wait');
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
