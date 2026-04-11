@@ -310,16 +310,6 @@
             outline: none;
         }
 
-        /* Mobile menu */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-
         /* Misc */
         .star {
             color: #fbbf24;
@@ -378,24 +368,29 @@
         </div>
     </nav>
     <div id="mobileMenu"
-        class="mobile-menu fixed inset-0 bg-dark-950/98 z-[100] flex flex-col items-center justify-center gap-8">
-        <button id="closeMenuBtn" class="absolute top-6 right-6 text-white p-2" aria-label="Close">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        class="fixed inset-0 bg-dark-950 z-[100] transform translate-x-full transition-transform duration-300 md:hidden pt-28 px-6 text-center">
+        <button id="closeMenuBtn" class="absolute top-8 right-6 text-white p-2" aria-label="Close">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-        <a href="#why-us" class="mobile-link text-2xl font-heading font-semibold text-white hover:text-brand-400">Why
-            Us</a>
-        <a href="#services"
-            class="mobile-link text-2xl font-heading font-semibold text-white hover:text-brand-400">Services</a>
-        <a href="#reviews"
-            class="mobile-link text-2xl font-heading font-semibold text-white hover:text-brand-400">Reviews</a>
-        <a href="#contact"
-            class="mobile-link text-2xl font-heading font-semibold text-white hover:text-brand-400">Contact</a>
-        <a href="tel:+12145550123" class="text-brand-400 text-xl font-semibold mt-4">(214) 555-0123</a>
-        <a href="#contact"
-            class="mobile-link btn-glow bg-brand-500 text-white px-8 py-3 rounded-full text-lg font-semibold">Get a Free
-            Quote</a>
+        <div class="flex flex-col space-y-8 mt-10">
+            <a href="#why-us" class="mobile-link text-3xl font-heading font-semibold text-white hover:text-brand-400">Why Us</a>
+            <a href="#services" class="mobile-link text-3xl font-heading font-semibold text-white hover:text-brand-400">Services</a>
+            <a href="#reviews" class="mobile-link text-3xl font-heading font-semibold text-white hover:text-brand-400">Reviews</a>
+            <a href="#contact" class="mobile-link text-3xl font-heading font-semibold text-white hover:text-brand-400">Contact</a>
+        </div>
+        <div class="mt-16 border-t border-white/10 pt-10">
+            <a href="tel:+12145550123" class="text-2xl font-semibold text-brand-400 mb-8 flex justify-center items-center">
+                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                (214) 555-0123
+            </a>
+            <a href="#contact" class="mobile-link w-full btn-glow bg-brand-500 text-white font-semibold py-4 rounded-xl text-xl inline-block shadow-xl">
+                Get a Free Quote
+            </a>
+        </div>
     </div>
 
     <!-- ═══ HERO — SPLIT: TEXT LEFT / IMAGE RIGHT ═══ -->
@@ -920,9 +915,25 @@
         var menuBtn = document.getElementById('menuBtn');
         var closeBtn = document.getElementById('closeMenuBtn');
         var menu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', function () { menu.classList.add('open'); });
-        closeBtn.addEventListener('click', function () { menu.classList.remove('open'); });
-        document.querySelectorAll('.mobile-link').forEach(function (l) { l.addEventListener('click', function () { menu.classList.remove('open'); }); });
+        
+        function toggleMenu() {
+            if (menu.classList.contains('translate-x-full')) {
+                menu.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.mobile-link').forEach(function (l) { 
+            l.addEventListener('click', function () { 
+                menu.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            }); 
+        });
 
         // Form loading state
         document.getElementById('contactForm').addEventListener('submit', function () {
