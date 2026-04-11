@@ -14,32 +14,119 @@
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
     <link
         href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        heading: ['Sora', 'sans-serif'],
-                        body: ['DM Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#eefbf4', 100: '#d6f5e3', 200: '#b0eacc', 300: '#7ddaae',
-                            400: '#48c28b', 500: '#26a871', 600: '#18875b', 700: '#146c4b',
-                            800: '#13563d', 900: '#114733', 950: '#08281d',
-                        },
-                        dark: {
-                            700: '#2a3245', 800: '#212838', 900: '#1a2030', 950: '#151b28',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
+    <style>
+/* Tailwind Utilities (purged) */
+*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+html{line-height:1.5;-webkit-text-size-adjust:100%}
+body{margin:0;line-height:inherit}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+a{color:inherit;text-decoration:inherit}
+b,strong{font-weight:bolder}
+button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}
+button,select{text-transform:none}
+button{-webkit-appearance:button;background-color:transparent;background-image:none}
+img,svg,video{display:block;vertical-align:middle}
+img,video{max-width:100%;height:auto}
+input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}
+*,::before,::after{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000}
+.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}
+.inset-0{inset:0px}.top-0{top:0px}.top-8{top:2rem}.right-0{right:0px}.right-6{right:1.5rem}.left-0{left:0px}
+.-left-4{left:-1rem}.-left-40{left:-10rem}.-top-40{top:-10rem}.-right-40{right:-10rem}.-bottom-4{bottom:-1rem}.-bottom-40{bottom:-10rem}
+.z-10{z-index:10}.z-50{z-index:50}.z-\[100\]{z-index:100}
+.order-1{order:1}.order-2{order:2}
+.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.block{display:block}.inline-block{display:inline-block}
+.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}
+.items-center{align-items:center}.items-start{align-items:flex-start}
+.justify-between{justify-content:space-between}.justify-center{justify-content:center}
+.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-10{gap:2.5rem}
+.space-y-5>:not([hidden])~:not([hidden]){margin-top:1.25rem}
+.space-y-8>:not([hidden])~:not([hidden]){margin-top:2rem}
+.w-2{width:.5rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-10{width:2.5rem}.w-11{width:2.75rem}.w-20{width:5rem}.w-96{width:24rem}.w-fit{width:fit-content}.w-full{width:100%}
+.h-2{height:.5rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-10{height:2.5rem}.h-11{height:2.75rem}.h-20{height:5rem}.h-64{height:16rem}.h-96{height:24rem}.h-auto{height:auto}.h-full{height:100%}
+.min-h-\[320px\]{min-height:320px}
+.max-w-lg{max-width:32rem}.max-w-xl{max-width:36rem}.max-w-2xl{max-width:42rem}
+.shrink-0{flex-shrink:0}
+.aspect-\[4\/3\]{aspect-ratio:4/3}.aspect-\[16\/10\]{aspect-ratio:16/10}
+.p-2{padding:.5rem}.p-5{padding:1.25rem}.p-7{padding:1.75rem}.p-8{padding:2rem}
+.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}
+.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-3\.5{padding-top:.875rem;padding-bottom:.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-24{padding-top:6rem;padding-bottom:6rem}
+.pt-4{padding-top:1rem}.pt-8{padding-top:2rem}.pt-10{padding-top:2.5rem}.pt-20{padding-top:5rem}.pt-28{padding-top:7rem}
+.pb-4{padding-bottom:1rem}
+.mt-1{margin-top:.25rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mt-10{margin-top:2.5rem}.mt-14{margin-top:3.5rem}.mt-16{margin-top:4rem}
+.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mb-16{margin-bottom:4rem}
+.mr-3{margin-right:.75rem}
+.mx-auto{margin-left:auto;margin-right:auto}
+.font-heading{font-family:'Sora',sans-serif}
+.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}.font-extrabold{font-weight:800}
+.text-xs{font-size:.75rem;line-height:1rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}
+.text-center{text-align:center}.leading-tight{line-height:1.25}.leading-relaxed{line-height:1.625}.tracking-widest{letter-spacing:.1em}.uppercase{text-transform:uppercase}
+.text-white{color:#fff}
+.text-gray-300{color:#d1d5db}.text-gray-400{color:#9ca3af}.text-gray-500{color:#6b7280}.text-gray-700{color:#374151}.text-gray-900{color:#111827}
+.text-brand-100{color:#d6f5e3}.text-brand-300{color:#7ddaae}.text-brand-400{color:#48c28b}.text-brand-600{color:#18875b}.text-brand-700{color:#146c4b}
+.bg-white{background-color:#fff}.bg-gray-50{background-color:#f9fafb}
+.bg-brand-100{background-color:#d6f5e3}.bg-brand-400{background-color:#48c28b}.bg-brand-500{background-color:#26a871}
+.bg-brand-500\/5{background-color:rgb(38 168 113/.05)}.bg-brand-500\/10{background-color:rgb(38 168 113/.1)}.bg-brand-500\/15{background-color:rgb(38 168 113/.15)}.bg-brand-500\/20{background-color:rgb(38 168 113/.2)}
+.bg-dark-800{background-color:#212838}.bg-dark-900{background-color:#1a2030}.bg-dark-950{background-color:#151b28}
+.bg-dark-950\/50{background-color:rgb(21 27 40/.5)}
+.bg-white\/5{background-color:rgb(255 255 255/.05)}
+.border-brand-500\/20{border-color:rgb(38 168 113/.2)}.border-brand-500\/25{border-color:rgb(38 168 113/.25)}
+.border-gray-100{border-color:#f3f4f6}.border-gray-200{border-color:#e5e7eb}
+.border-white\/5{border-color:rgb(255 255 255/.05)}.border-white\/10{border-color:rgb(255 255 255/.1)}.border-white\/\[0\.08\]{border-color:rgb(255 255 255/.08)}
+.border{border-width:1px}.border-t{border-top-width:1px}
+.placeholder-gray-400::placeholder{color:#9ca3af}
+.rounded-xl{border-radius:.75rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}
+.shadow-sm{box-shadow:0 1px 2px 0 rgb(0 0 0/.05)}.shadow-lg{box-shadow:0 10px 15px -3px rgb(0 0 0/.1),0 4px 6px -4px rgb(0 0 0/.1)}.shadow-xl{box-shadow:0 20px 25px -5px rgb(0 0 0/.1),0 8px 10px -6px rgb(0 0 0/.1)}.shadow-2xl{box-shadow:0 25px 50px -12px rgb(0 0 0/.25)}
+.shadow-black\/20{--tw-shadow-color:rgb(0 0 0/.2)}.shadow-gray-200\/50{--tw-shadow-color:rgb(229 231 235/.5)}
+.overflow-hidden{overflow:hidden}.object-cover{object-fit:cover}
+.blur-3xl{filter:blur(64px)}.opacity-25{opacity:.25}.opacity-75{opacity:.75}
+.resize-none{resize:none}.appearance-none{-webkit-appearance:none;appearance:none}
+.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:150ms}
+.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:150ms}
+.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:150ms}
+.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}
+.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
+.translate-x-full{--tw-translate-x:100%;transform:translateX(100%)}
+.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.animate-spin{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hover\:bg-brand-50:hover{background-color:#eefbf4}
+.hover\:bg-brand-600:hover{background-color:#18875b}
+.hover\:bg-brand-500\/20:hover{background-color:rgb(38 168 113/.2)}
+.hover\:text-brand-300:hover{color:#7ddaae}
+.hover\:text-brand-400:hover{color:#48c28b}
+.hover\:border-brand-500\/30:hover{border-color:rgb(38 168 113/.3)}
+.group:hover .group-hover\:bg-brand-500{background-color:#26a871}
+.group:hover .group-hover\:scale-105{transform:scale(1.05)}
+.group:hover .group-hover\:text-white{color:#fff}
+@media(min-width:640px){
+.sm\:bottom-4{bottom:1rem}.sm\:left-4{left:1rem}.sm\:mt-8{margin-top:2rem}
+.sm\:p-6{padding:1.5rem}.sm\:p-10{padding:2.5rem}.sm\:pb-6{padding-bottom:1.5rem}.sm\:pt-24{padding-top:6rem}
+.sm\:py-28{padding-top:7rem;padding-bottom:7rem}
+.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}
+}
+@media(min-width:768px){
+.md\:flex{display:flex}.md\:hidden{display:none}.md\:flex-row{flex-direction:row}
+.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(min-width:1024px){
+.lg\:order-1{order:1}.lg\:order-2{order:2}
+.lg\:col-span-2{grid-column:span 2/span 2}.lg\:col-span-3{grid-column:span 3/span 3}
+.lg\:flex-1{flex:1 1 0%}
+.lg\:gap-8{gap:2rem}.lg\:gap-12{gap:3rem}.lg\:gap-14{gap:3.5rem}
+.lg\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.lg\:h-auto{height:auto}.lg\:pt-28{padding-top:7rem}.lg\:pb-8{padding-bottom:2rem}
+.lg\:text-5xl{font-size:3rem;line-height:1}
+}
+@media(min-width:1280px){.xl\:text-6xl{font-size:3.75rem;line-height:1}}
+    </style>
     <style>
         *,
         *::before,
@@ -454,7 +541,8 @@
                     <div class="hero-image relative">
                         <img src="images/hero_action_1_1775501032261.png"
                             alt="Professional cleaner working in modern kitchen"
-                            class="w-full h-auto rounded-3xl shadow-2xl shadow-black/20">
+                            class="w-full h-auto rounded-3xl shadow-2xl shadow-black/20"
+                            width="800" height="600" fetchpriority="high">
                         <div
                             class="absolute -bottom-4 -left-4 sm:bottom-4 sm:left-4 bg-white text-gray-900 rounded-2xl px-5 py-3 shadow-lg flex items-center gap-3">
                             <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center">
@@ -557,15 +645,19 @@
             <div class="reveal mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="photo-card rounded-2xl aspect-[4/3]"><img
                         src="images/freshspace_service_1_1775500557459.png" alt="Clean kitchen"
-                        class="w-full h-full object-cover rounded-2xl"></div>
+                        class="w-full h-full object-cover rounded-2xl"
+                        width="400" height="300" loading="lazy"></div>
                 <div class="photo-card rounded-2xl aspect-[4/3]"><img
                         src="images/freshspace_service_2_1775500572118.png" alt="Clean bathroom"
-                        class="w-full h-full object-cover rounded-2xl"></div>
+                        class="w-full h-full object-cover rounded-2xl"
+                        width="400" height="300" loading="lazy"></div>
                 <div class="photo-card rounded-2xl aspect-[4/3]"><img src="images/freshspace_team_1775500587731.png"
-                        alt="Clean living room" class="w-full h-full object-cover rounded-2xl"></div>
+                        alt="Clean living room" class="w-full h-full object-cover rounded-2xl"
+                        width="400" height="300" loading="lazy"></div>
                 <div class="photo-card rounded-2xl aspect-[4/3]"><img
                         src="images/img_1527515637462-cff94eecc1ac_800.jpg" alt="Modern clean home"
-                        class="w-full h-full object-cover rounded-2xl"></div>
+                        class="w-full h-full object-cover rounded-2xl"
+                        width="400" height="300" loading="lazy"></div>
             </div>
         </div>
     </section>
@@ -586,7 +678,8 @@
                     class="reveal s1 service-card bg-white rounded-2xl border border-gray-100 overflow-hidden group shadow-sm">
                     <div class="aspect-[16/10] overflow-hidden"><img src="images/freshspace_service_1_1775500557459.png"
                             alt="Regular house cleaning"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            width="480" height="300" loading="lazy">
                     </div>
                     <div class="p-7">
                         <h3 class="font-heading font-bold text-xl mb-3">Regular House Cleaning</h3>
@@ -598,7 +691,8 @@
                     class="reveal s2 service-card bg-white rounded-2xl border border-gray-100 overflow-hidden group shadow-sm">
                     <div class="aspect-[16/10] overflow-hidden"><img src="images/freshspace_service_2_1775500572118.png"
                             alt="Deep cleaning"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            width="480" height="300" loading="lazy">
                     </div>
                     <div class="p-7">
                         <h3 class="font-heading font-bold text-xl mb-3">Deep Cleaning</h3>
@@ -610,7 +704,8 @@
                     class="reveal s3 service-card bg-white rounded-2xl border border-gray-100 overflow-hidden group shadow-sm">
                     <div class="aspect-[16/10] overflow-hidden"><img src="images/img_1600566753190-17f0baa2a6c3_600.jpg"
                             alt="Move in move out cleaning"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            width="480" height="300" loading="lazy">
                     </div>
                     <div class="p-7">
                         <h3 class="font-heading font-bold text-xl mb-3">Move-In / Move-Out</h3>
@@ -622,7 +717,8 @@
                     class="reveal s4 service-card bg-white rounded-2xl border border-gray-100 overflow-hidden group shadow-sm">
                     <div class="aspect-[16/10] overflow-hidden"><img src="images/freshspace_team_1775500587731.png"
                             alt="Office cleaning"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            width="480" height="300" loading="lazy">
                     </div>
                     <div class="p-7">
                         <h3 class="font-heading font-bold text-xl mb-3">Office &amp; Commercial</h3>
@@ -634,7 +730,8 @@
                     class="reveal s5 service-card bg-white rounded-2xl border border-gray-100 overflow-hidden group shadow-sm">
                     <div class="aspect-[16/10] overflow-hidden"><img src="images/img_1600210492486-724fe5c67fb0_500.jpg"
                             alt="Post construction cleaning"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            width="480" height="300" loading="lazy">
                     </div>
                     <div class="p-7">
                         <h3 class="font-heading font-bold text-xl mb-3">Post-Construction</h3>
@@ -753,8 +850,8 @@
                                 *</label><input type="email" name="email" required
                                 class="form-input w-full px-4 py-3.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-900 placeholder-gray-400 text-base"
                                 placeholder="john@example.com"></div>
-                        <div class="mt-5"><label class="block text-base font-semibold text-gray-700 mb-2">Service Needed
-                                *</label><select name="service" required
+                        <div class="mt-5"><label for="serviceSelect" class="block text-base font-semibold text-gray-700 mb-2">Service Needed
+                                *</label><select id="serviceSelect" name="service" required
                                 class="form-input w-full px-4 py-3.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-900 text-base appearance-none">
                                 <option value="" disabled selected>Select a service...</option>
                                 <option>Regular House Cleaning</option>
@@ -842,8 +939,8 @@
                     <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-lg h-64 lg:h-auto lg:flex-1">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d429155.98301699876!2d-97.08480577356746!3d32.82058389506702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c19f77b45974b%3A0xb9ec9ba4f647571f!2sDallas%2C%20TX!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                            width="100%" height="100%" style="border:0;min-height:250px" allowfullscreen loading="lazy"
-                            title="Dallas TX map"></iframe>
+                            width="100%" height="250" style="border:0;min-height:250px" allowfullscreen loading="lazy"
+                            title="FreshSpace Cleaning service area map - Dallas, TX"></iframe>
                     </div>
                 </div>
             </div>
